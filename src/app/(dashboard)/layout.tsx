@@ -1,6 +1,8 @@
 // import { Footer, Sidebar, TopMenu } from "@/components";
 
-import { SidebarWrapper } from "@/components/sidebar/Sidebar";
+import "@/app/globals.css";
+
+import { SidebarContainer } from "@/components/sidebar/Sidebar";
 
 export default function DashboardLayout({
   children,
@@ -9,15 +11,10 @@ export default function DashboardLayout({
 }) {
   return (
     <main className="min-h-screen">
-      {/* <TopMenu />
-      <Sidebar /> */}
-      <div className='flex'>
-        {/* <SidebarWrapper > */}
-          <SidebarWrapper />
-          {/* </SidebarWrapper> */}
+      <div className="flex">
+        <SidebarContainer />
+        <div className="w-full">{children}</div>
       </div>
-      <div className="px-0 sm:px-0">{children}</div>
-      {/* <Footer /> */}
     </main>
   );
 }
