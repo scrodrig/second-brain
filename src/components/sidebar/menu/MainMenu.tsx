@@ -1,10 +1,6 @@
-import {
-  IoBalloonSharp,
-  IoCartOutline,
-  IoCashOutline,
-  IoPerson,
-  IoPersonRemove,
-} from "react-icons/io5";
+import { FaUsers } from "react-icons/fa";
+import { MdOutlineFamilyRestroom } from "react-icons/md";
+import { PiInvoiceBold } from "react-icons/pi";
 
 interface MenuItem {
   isActive?: boolean;
@@ -18,27 +14,24 @@ interface MenuItem {
 export const mainMenuItems: (pathname: string) => MenuItem[] = (
   pathname: string
 ) => {
-
   return [
     {
-      isActive: pathname === "/developers",
-      title: "Developers",
-      icon: <IoPerson />,
+      isActive: pathname === "/admin/users",
+      title: "Users",
+      icon: <FaUsers />,
       href: "/",
     },
     {
-      isActive: pathname === "/view",
-      title: "View",
-      icon: <IoCashOutline />,
+      isActive: pathname === "/admin/households",
+      title: "Households",
+      icon: <MdOutlineFamilyRestroom />,
       href: "/",
     },
     {
-      isActive: pathname === "/settings",
-      title: "Settings",
-      icon: <IoPersonRemove />,
+      isActive: pathname === "/admin/invoices",
+      title: "Invoices",
+      icon: <PiInvoiceBold />,
       href: "/",
     },
   ];
 };
-
-
