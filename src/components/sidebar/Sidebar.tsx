@@ -1,23 +1,11 @@
 "use client";
 
-import { Avatar, Tooltip } from "@nextui-org/react";
-import { FaFastBackward, FaPercentage, FaSearch } from "react-icons/fa";
-import {
-  IoBalloonSharp,
-  IoBuild,
-  IoCartOutline,
-  IoCashOutline,
-  IoFilter,
-  IoHome,
-  IoPerson,
-  IoPersonRemove,
-  IoSettings,
-} from "react-icons/io5";
 import React, { useState } from "react";
 
 import { CollapseItems } from "./CollapseItems";
-import { CompaniesDropdown } from "./CompaniesDropdown";
 import { FaAustralSign } from "react-icons/fa6";
+import Image from "next/image";
+import { IoHome } from "react-icons/io5";
 import { Sidebar } from "./sidebar.styles";
 import { SidebarItem } from "./SidebarItem";
 import { SidebarMenu } from "./SidebarMenu";
@@ -30,7 +18,9 @@ export const SidebarContainer = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <aside className="h-screen z-[20] sticky top-0">
+    <aside className="h-screen z-[20] sticky top-0" style={{
+      scrollbarGutter: "stable both-edges",
+    }}>
       {collapsed ? (
         <div
           className={Sidebar.Overlay()}
@@ -44,8 +34,10 @@ export const SidebarContainer = () => {
           collapsed: collapsed,
         })}
       >
-        <div className={Sidebar.Header()}>
-          <CompaniesDropdown />
+        <div className="flex justify-center items-center flex-col">
+          {/* <CompaniesDropdown /> */}
+          <Image src="/imgs/logo.png" alt="logo" width={100} height={100} priority />
+          <span className="text-2xl font-bold">SECOND BRAIN</span>
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
