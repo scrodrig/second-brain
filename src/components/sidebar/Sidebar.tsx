@@ -15,29 +15,17 @@ import {
 } from "react-icons/io5";
 import React, { useState } from "react";
 
-// import { HomeIcon } from "../icons/sidebar/home-icon";
-// import { PaymentsIcon } from "../icons/sidebar/payments-icon";
-// import { BalanceIcon } from "../icons/sidebar/balance-icon";
-// import { AccountsIcon } from "../icons/sidebar/accounts-icon";
-// import { CustomersIcon } from "../icons/sidebar/customers-icon";
-// import { ProductsIcon } from "../icons/sidebar/products-icon";
-// import { ReportsIcon } from "../icons/sidebar/reports-icon";
-// import { DevIcon } from "../icons/sidebar/dev-icon";
-// import { ViewIcon } from "../icons/sidebar/view-icon";
-// import { SettingsIcon } from "../icons/sidebar/settings-icon";
 import { CollapseItems } from "./CollapseItems";
 import { CompaniesDropdown } from "./CompaniesDropdown";
 import { FaAustralSign } from "react-icons/fa6";
 import { Sidebar } from "./sidebar.styles";
 import { SidebarItem } from "./SidebarItem";
 import { SidebarMenu } from "./SidebarMenu";
-// import { ChangeLogIcon } from "../icons/sidebar/changelog-icon";
+import { generalMenuItems } from "./menu/GeneralMenu";
+import { mainMenuItems } from "./menu/MainMenu";
 import { usePathname } from "next/navigation";
 
-// import { FilterIcon } from "../icons/sidebar/filter-icon";
-// import { useSidebarContext } from "../layout/layout-context";
-
-export const SidebarWrapper = () => {
+export const SidebarContainer = () => {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
 
@@ -68,55 +56,51 @@ export const SidebarWrapper = () => {
               href="/"
             />
             <SidebarMenu title="Main Menu">
-              <SidebarItem
-                isActive={pathname === "/accounts"}
-                title="Accounts"
-                icon={<IoPerson />}
-                href="accounts"
-              />
-              <SidebarItem
-                isActive={pathname === "/payments"}
-                title="Payments"
-                icon={<IoCashOutline />}
-              />
-              <CollapseItems
-                icon={<IoBalloonSharp />}
-                items={["Banks Accounts", "Credit Cards", "Loans"]}
-                title="Balances"
-              />
-              <SidebarItem
-                isActive={pathname === "/customers"}
-                title="Customers"
-                icon={<IoPersonRemove />}
-              />
-              <SidebarItem
-                isActive={pathname === "/products"}
-                title="Products"
-                icon={<IoCartOutline />}
-              />
-              <SidebarItem
-                isActive={pathname === "/reports"}
-                title="Reports"
-                icon={<IoBuild />}
-              />
+              {generalMenuItems(pathname).map((item) => {
+                if (item.type === "collapse") {
+                  return (
+                    <CollapseItems
+                      key={item.title}
+                      title={item.title}
+                      icon={item.icon}
+                      items={item.items ?? []}
+                    />
+                  );
+                }
+                return (
+                  <SidebarItem
+                    key={item.title}
+                    title={item.title}
+                    icon={item.icon}
+                    isActive={item.isActive}
+                    href={item.href}
+                  />
+                );
+              })}
             </SidebarMenu>
 
             <SidebarMenu title="General">
-              <SidebarItem
-                isActive={pathname === "/developers"}
-                title="Developers"
-                icon={<FaPercentage />}
-              />
-              <SidebarItem
-                isActive={pathname === "/view"}
-                title="View Test Data"
-                icon={<FaFastBackward />}
-              />
-              <SidebarItem
-                isActive={pathname === "/settings"}
-                title="Settings"
-                icon={<FaSearch />}
-              />
+              {mainMenuItems(pathname).map((item) => {
+                if (item.type === "collapse") {
+                  return (
+                    <CollapseItems
+                      key={item.title}
+                      title={item.title}
+                      icon={item.icon}
+                      items={item.items ?? []}
+                    />
+                  );
+                }
+                return (
+                  <SidebarItem
+                    key={item.title}
+                    title={item.title}
+                    icon={item.icon}
+                    isActive={item.isActive}
+                    href={item.href}
+                  />
+                );
+              })}
             </SidebarMenu>
 
             <SidebarMenu title="Updates">
@@ -127,7 +111,7 @@ export const SidebarWrapper = () => {
               />
             </SidebarMenu>
           </div>
-          <div className={Sidebar.Footer()}>
+          {/* <div className={Sidebar.Footer()}>
             <Tooltip content={"Settings"} color="primary">
               <div className="max-w-fit">
                 <IoSettings />
@@ -144,7 +128,7 @@ export const SidebarWrapper = () => {
                 size="sm"
               />
             </Tooltip>
-          </div>
+          </div> */}
         </div>
       </div>
     </aside>
