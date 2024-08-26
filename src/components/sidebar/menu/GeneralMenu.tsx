@@ -1,10 +1,9 @@
-import {
-  IoBalloonSharp,
-  IoCartOutline,
-  IoCashOutline,
-  IoPerson,
-  IoPersonRemove,
-} from "react-icons/io5";
+import { FaBalanceScaleLeft, FaRegUser } from "react-icons/fa";
+
+import { FcTodoList } from "react-icons/fc";
+import { MdFamilyRestroom } from "react-icons/md";
+import { PiInvoiceFill } from "react-icons/pi";
+import { TbReportSearch } from "react-icons/tb";
 
 interface MenuItem {
   isActive?: boolean;
@@ -23,38 +22,38 @@ export const generalMenuItems: (pathname: string) => MenuItem[] = (
     {
       isActive: pathname === "/accounts",
       title: "Accounts",
-      icon: <IoPerson />,
+      icon: <FaRegUser  />,
       href: "accounts",
     },
     {
-      isActive: pathname === "/payments",
-      title: "Payments",
-      icon: <IoCashOutline />,
+      isActive: pathname === "/households",
+      title: "Households",
+      icon: <MdFamilyRestroom  />,
       href: "/",
+    },
+    {
+      isActive: pathname === "/invoices",
+      title: "Invoices",
+      icon: <PiInvoiceFill  />,
+      href: "/invoices",
     },
     {
       title: "Balances",
       items: ["Banks Accounts", "Credit Cards", "Loans"],
-      icon: <IoBalloonSharp />,
+      icon: <FaBalanceScaleLeft  />,
       type: "collapse",
       href: "/",
     },
     {
-      isActive: pathname === "/customers",
-      title: "Customers",
-      icon: <IoPersonRemove />,
-      href: "/",
-    },
-    {
-      isActive: pathname === "/products",
-      title: "Products",
-      icon: <IoCartOutline />,
+      isActive: pathname === "/todos",
+      title: "Todos",
+      icon: <FcTodoList  />,
       href: "/",
     },
     {
       isActive: pathname === "/reports",
       title: "Reports",
-      icon: <IoCartOutline />,
+      icon: <TbReportSearch  />,
       href: "/",
     },
   ];
