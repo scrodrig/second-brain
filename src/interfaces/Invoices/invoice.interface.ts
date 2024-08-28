@@ -1,9 +1,9 @@
 export interface Invoice {
   id: string;
-  date: string;
+  date: Date;
   place: string;
   nif: string;
-  concept: string;
+  concept: InvoiceConcept;
   description: string;
   owner: string;
   account: string;
@@ -11,3 +11,5 @@ export interface Invoice {
   isReembursable: boolean;
   isRefunded: boolean;
 }
+
+export type InvoiceConcept = "Meal" | "Technology" | "Internet" | "Electricity" | "Education" | "Transportation" | "Others";
