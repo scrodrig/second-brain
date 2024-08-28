@@ -1,10 +1,13 @@
 import { InvoiceGrid } from "@/components";
+import { getInvoices } from "@/actions";
 
-export default function InvoicePage() {
+export default async function InvoicePage() {
+  // TODO: Provide a list of invoices for testing
+  const invoices = await getInvoices();
+
   return (
     <div>
-        {/*TODO: Provide a list of invoices for testing */}
-        <InvoiceGrid invoices={[]} />
+      <InvoiceGrid invoices={invoices} />
     </div>
   );
 }
