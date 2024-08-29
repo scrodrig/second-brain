@@ -1,6 +1,5 @@
 import { Invoice } from "@/interfaces";
 import { InvoiceGridItem } from "./InvoiceGridItem";
-import { getInvoices } from "@/actions/invoices/get-invoices";
 
 interface Props {
   invoices: Invoice[];
