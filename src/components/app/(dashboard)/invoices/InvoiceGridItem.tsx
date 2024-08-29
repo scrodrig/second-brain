@@ -8,16 +8,15 @@ import {
   CardHeader,
   Chip,
   Divider,
-  Link,
 } from "@nextui-org/react";
 import { CONCEPT_COLORS, currencyFormat } from "@/utils";
-import { IoCalendar, IoCalendarOutline } from "react-icons/io5";
 
 import { AiTwotoneBank } from "react-icons/ai";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { GrLinkNext } from "react-icons/gr";
 import Image from "next/image";
 import { Invoice } from "@/interfaces";
+import { IoCalendarOutline } from "react-icons/io5";
 import { LiaPiggyBankSolid } from "react-icons/lia";
 
 interface Props {
@@ -28,17 +27,19 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
   return (
     <Card className="max-w-[400px] min-w-[250px]">
       <CardHeader className="flex gap-3">
-        {/* <Image
-          alt="nextui logo"
-          height={40}
-          src="https://avatars.githubusercontent.com/u/86160567?s=200&v=4"
-          width={40}
-        /> */}
-
         <div className="flex flex-col w-full">
-          <span className="text-3xl font-bold text-center mb-5 overflow-hidden text-nowrap text-ellipsis">
-            {invoice.place}
-          </span>
+          <div className="flex w-full items-center mb-2">
+            <Image
+              alt="nextui logo"
+              height={32}
+              width={32}
+              src={`https://ui-avatars.com/api/?name=${invoice.place}&rounded=true&bold=true&background=random`}
+              className="mx-2"
+            />
+            <div className="text-3xl font-bold text-center overflow-hidden text-nowrap text-ellipsis">
+              {invoice.place}
+            </div>
+          </div>
 
           <div className="flex flex-col w-full justify-center items-center">
             <Divider className="mb-2" />
@@ -76,12 +77,12 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
         <div className="p-4 flex flex-col h-fit">
           <p className="font-light mt-0">Price:</p>
           <div className="text-5xl text-right">
-            <div className="font-medium text-green-800 dark:text-gray-50 hover:text-green-700 hover:font-bold transition-colors duration-150 ease-in-out">
+            <div className="font-semibold text-green-800 dark:text-gray-50 hover:text-green-700 hover:font-bold transition-colors duration-150 ease-in-out">
               {currencyFormat(invoice.total)}
             </div>
           </div>
 
-          <blockquote className="font-light mt-5 text-ellipsis">{`"${invoice.description}"`}</blockquote>
+          <blockquote className=" text-center font-light mt-5 text-ellipsis">{`"${invoice.description}"`}</blockquote>
 
           <div className="mt-3 flex justify-start items-center">
             <IoCalendarOutline className="mr-2 text-sky-600" size={20} />
@@ -89,7 +90,7 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
           </div>
 
           <div className="mt-3 flex justify-start items-center">
-            <AiTwotoneBank  className="mr-2 text-gray-600" size={20} />
+            <AiTwotoneBank className="mr-2 text-gray-600" size={20} />
             {invoice.account}
           </div>
 
