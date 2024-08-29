@@ -13,7 +13,7 @@ export default function DashboardLayout({
     <main className="min-h-screen">
       <div className="flex">
         <SidebarContainer />
-        <div className="w-full">{children}</div>
+        <div className="w-full px-5 sm:px-10">{children}</div>
       </div>
     </main>
   );
