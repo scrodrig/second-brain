@@ -19,6 +19,11 @@ const config: Config = {
       },
     },
   },
+  variants: {
+    extend: {
+      animation: ['group-hover'],
+    },
+  },
   darkMode: "class",
   plugins: [nextui()],
 };
