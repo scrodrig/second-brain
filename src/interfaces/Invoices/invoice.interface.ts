@@ -10,6 +10,7 @@ export interface Invoice {
   total: number;
   isReembursable: boolean;
   isRefunded: boolean;
+  vatRefund?: boolean;
 }
 
 export type InvoiceConcept = "Meal" | "Technology" | "Internet" | "Electricity" | "Education" | "Transportation" | "Others";
