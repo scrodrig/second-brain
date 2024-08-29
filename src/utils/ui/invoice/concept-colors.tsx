@@ -1,4 +1,7 @@
+import React, { ReactNode } from "react";
+
 import { InvoiceConcept } from "@/interfaces";
+import { IoCalendar } from "react-icons/io5";
 
 export const CONCEPT_COLORS_GRADIENT: Record<InvoiceConcept, string> = {
   Meal: "bg-gradient-to-br from-indigo-500 to-pink-500 border-small border-white/50 shadow-pink-500/30",
@@ -16,12 +19,15 @@ export const CONCEPT_COLORS_GRADIENT: Record<InvoiceConcept, string> = {
     "bg-gradient-to-br from-indigo-500 to-red-500 border-small border-white/50 shadow-red-500/30",
 };
 
-export const CONCEPT_COLORS: Record<InvoiceConcept, string> = {
-  Meal: "bg-green-300",
-  Transportation: "bg-red-300",
-  Technology: "bg-amber-300",
-  Internet: "bg-violet-300",
-  Electricity: "bg-blue-300",
-  Education: "bg-orange-300",
-  Others: "bg-grey-500",
+export const CONCEPT_COLORS: Record<
+  InvoiceConcept,
+  { className: string; icon: ReactNode }
+> = {
+  Meal: { className: "bg-green-300", icon: <IoCalendar /> },
+  Transportation: { className: "bg-red-300", icon: <IoCalendar /> },
+  Technology: { className: "bg-amber-300", icon: <IoCalendar /> },
+  Internet: { className: "bg-violet-300", icon: <IoCalendar /> },
+  Electricity: { className: "bg-blue-300", icon: <IoCalendar /> },
+  Education: { className: "bg-orange-300", icon: <IoCalendar /> },
+  Others: { className: "bg-gray-500", icon: <IoCalendar /> },
 };
