@@ -14,6 +14,7 @@ import { CONCEPT_COLORS, currencyFormat } from "@/utils";
 import { AiTwotoneBank } from "react-icons/ai";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { GrLinkNext } from "react-icons/gr";
+import { HiOutlineReceiptTax } from "react-icons/hi";
 import Image from "next/image";
 import { Invoice } from "@/interfaces";
 import { IoCalendarOutline } from "react-icons/io5";
@@ -103,6 +104,13 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
             <div className="mt-3 flex justify-start items-center">
               <LiaPiggyBankSolid className="mr-2 text-pink-600" size={20} />
               {invoice.isRefunded ? "Refounded" : "Not Refounded"}
+            </div>
+          )}
+
+          {invoice.owner === 'Company' && (
+            <div className="mt-3 flex justify-start items-center">
+              <HiOutlineReceiptTax  className="mr-2 text-cyan-600" size={20} />
+              {invoice.vatRefund ? "Applicable" : "Not applicable"}
             </div>
           )}
         </div>
