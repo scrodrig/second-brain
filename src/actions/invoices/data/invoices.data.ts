@@ -24,7 +24,7 @@ export const invoices: Invoice[] = [
     owner: "Company",
     account: "Business",
     total: 4.5,
-    isReembursable: true,
+    isReembursable: false,
     isRefunded: false,
   },
   {
@@ -206,7 +206,7 @@ export const invoices: Invoice[] = [
     owner: "Company",
     account: "Personal",
     total: 10.25,
-    isReembursable: true,
+    isReembursable: false,
     isRefunded: false,
   },
   {
