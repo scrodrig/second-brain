@@ -2,7 +2,7 @@
 
 import "@/app/globals.css";
 
-import { SidebarContainer } from "@/components/sidebar/Sidebar";
+import { NavbarWrapper, SidebarContainer } from "@/components";
 
 export default function DashboardLayout({
   children,
@@ -13,7 +13,9 @@ export default function DashboardLayout({
     <main className="min-h-screen">
       <div className="flex">
         <SidebarContainer />
-        <div className="w-full px-5 sm:px-10">{children}</div>
+        <NavbarWrapper>
+          <div className="w-full px-5 sm:px-10 mt-5 sm:mt-10">{children}</div>
+        </NavbarWrapper>
       </div>
     </main>
   );
