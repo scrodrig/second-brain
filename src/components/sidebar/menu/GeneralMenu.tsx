@@ -23,7 +23,7 @@ export const generalMenuItems: (pathname: string) => MenuItem[] = (
       isActive: pathname === "/accounts",
       title: "Accounts",
       icon: <FaRegUser  />,
-      href: "accounts",
+      href: "/accounts",
     },
     {
       isActive: pathname === "/households",
