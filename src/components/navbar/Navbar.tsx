@@ -2,7 +2,7 @@ import { FcFeedback, FcSupport } from "react-icons/fc";
 import { Input, Link, Navbar, NavbarContent } from "@nextui-org/react";
 
 import { BurguerButton } from "./BurgerButton";
-import { IoSearch } from "react-icons/io5";
+import { NavbarBreadcums } from "./NavbarBreadcums";
 import { NotificationsDropdown } from "./NotificationsDropdown";
 import React from "react";
 import { SlSocialGithub } from "react-icons/sl";
@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const NavbarWrapper = ({ children }: Props) => {
+
   return (
     <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
       <Navbar
@@ -26,16 +27,7 @@ export const NavbarWrapper = ({ children }: Props) => {
           <BurguerButton />
         </NavbarContent>
         <NavbarContent className="w-full max-md:hidden">
-          <Input
-            startContent={<IoSearch />}
-            isClearable
-            className="w-full"
-            classNames={{
-              input: "w-full",
-              mainWrapper: "w-full",
-            }}
-            placeholder="Search..."
-          />
+          <NavbarBreadcums />
         </NavbarContent>
         <NavbarContent
           justify="end"
