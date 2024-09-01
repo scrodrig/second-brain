@@ -34,7 +34,7 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
               alt="nextui logo"
               height={32}
               width={32}
-              src={`https://ui-avatars.com/api/?name=${invoice.place}&rounded=true&bold=true&background=random`}
+              src={`https://ui-avatars.com/api/?name=${invoice.place}&rounded=true&bold=true&background=FF6666`}
               className="mx-2"
             />
             <div className="text-3xl font-bold text-center overflow-hidden text-nowrap text-ellipsis">
