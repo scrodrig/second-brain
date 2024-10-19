@@ -19,12 +19,15 @@ import Image from "next/image";
 import { Invoice } from "@/interfaces";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaPiggyBankSolid } from "react-icons/lia";
+import { useRouter } from "next/navigation";
 
 interface Props {
   invoice: Invoice;
 }
 
 export const InvoiceGridItem = ({ invoice }: Props) => {
+  const router = useRouter();
+
   return (
     <Card className="max-w-[400px] min-w-[250px]">
       <CardHeader className="flex gap-3">
@@ -107,9 +110,9 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
             </div>
           )}
 
-          {invoice.owner === 'Company' && (
+          {invoice.owner === "Company" && (
             <div className="mt-3 flex justify-start items-center">
-              <HiOutlineReceiptTax  className="mr-2 text-cyan-600" size={20} />
+              <HiOutlineReceiptTax className="mr-2 text-cyan-600" size={20} />
               {invoice.vatRefund ? "Applicable" : "Not applicable"}
             </div>
           )}
@@ -118,7 +121,12 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
       <Divider />
       <CardFooter>
         <div className="flex w-full justify-end">
-          <Button color="primary" variant="solid" endContent={<GrLinkNext />}>
+          <Button
+            color="primary"
+            variant="solid"
+            endContent={<GrLinkNext />}
+            onClick={() => router.push(`/invoice/${invoice.id}`)}
+          >
             See more
           </Button>
         </div>
