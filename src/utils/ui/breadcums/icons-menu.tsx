@@ -35,7 +35,6 @@ const iconsMenu: (icons: string) => IconMenu = (icon) => {
 
 export const getBreadcums = (pathname: string) => {
   const pathnames = pathname.split("/").filter((x) => x);
-  console.log("🚀 ~ getBreadcums ~ pathnames:", pathnames)
 
   const breadcrums: IconMenu[] = [];
 
