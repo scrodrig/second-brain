@@ -9,7 +9,6 @@ export const NavbarBreadcums = () => {
   const router = usePathname();
 
   const breadcums = getBreadcums(router);
-  console.log("🚀 ~ NavbarBreadcums ~ breadcums:", breadcums)
 
   return (
     <Breadcrumbs>
