@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 
 import { CollapseItems } from "./CollapseItems";
-import { CompaniesDropdown } from "./CompaniesDropdown";
 import { FaAustralSign } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import Image from "next/image";
