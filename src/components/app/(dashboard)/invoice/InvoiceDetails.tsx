@@ -48,7 +48,7 @@ export const InvoiceDetails = ({ invoice }: Props) => {
         </CardBody>
       </Card>
 
-      <div className="mt-10 mb-10 gap-5 grid grid-cols-1 md:grid-cols-4">
+      <div className="mt-10 mb-10 gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <Card className="group">
           <Image
             alt="Card background"
@@ -57,7 +57,7 @@ export const InvoiceDetails = ({ invoice }: Props) => {
             width={100}
             height={250}
           />
-          <CardBody className="flex flex-col md:flex-row justify-around items-center">
+          <CardBody className="flex flex-col md:flex-row mt-3 lg:mt-0 justify-around items-center">
             <div className="flex-col">
               <p className="text-tiny uppercase font-bold">Account</p>
               <h4 className="font-bold text-large">{invoice.account}</h4>
@@ -84,7 +84,7 @@ export const InvoiceDetails = ({ invoice }: Props) => {
         </Card>
 
         <Card className="group col-span-1 md:col-span-2">
-          <CardHeader className="text-4xl font-bold underline text-center">
+          <CardHeader className="text-4xl font-bold uppercase text-center">
             Invoice Details
           </CardHeader>
 
@@ -117,9 +117,9 @@ export const InvoiceDetails = ({ invoice }: Props) => {
               <div className="grid grid-cols-1 xl:grid-cols-3 mt-10 xl:mt-20 place-items-center gap-5">
                 <Chip
                   startContent={checkIcon(invoice.isReembursable)}
-                  variant="shadow"
+                  variant="flat"
                   size="lg"
-                  className={clsx("text-white", {
+                  className={clsx("text-white text-xl", {
                     "bg-green-500": invoice.isReembursable,
                     "bg-red-500": !invoice.isReembursable,
                   })}
@@ -131,19 +131,19 @@ export const InvoiceDetails = ({ invoice }: Props) => {
                   startContent={checkIcon(invoice.vatRefund ?? false)}
                   variant="shadow"
                   size="lg"
-                  className={clsx("text-white", {
+                  className={clsx("text-white text-xl", {
                     "bg-green-500": invoice.vatRefund,
                     "bg-red-500": !invoice.vatRefund,
                   })}
                 >
-                  {invoice.vatRefund ? "Applicable" : "Not applicable"}
+                  {invoice.vatRefund ? "VAT Applicable" : "VAT Not applicable"}
                 </Chip>
 
                 <Chip
                   startContent={checkIcon(invoice.isRefunded)}
                   variant="shadow"
                   size="lg"
-                  className={clsx("text-white", {
+                  className={clsx("text-white text-xl", {
                     "bg-green-500": invoice.isRefunded,
                     "bg-red-500": !invoice.isRefunded,
                   })}
