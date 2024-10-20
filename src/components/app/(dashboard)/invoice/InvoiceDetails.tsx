@@ -1,20 +1,40 @@
 import { Card, CardBody, CardHeader } from "@nextui-org/react";
 
 import { AiTwotoneBank } from "react-icons/ai";
+import { FaArrowDown } from "react-icons/fa6";
+import { FaMoneyBill } from "react-icons/fa";
 import Image from "next/image";
 import { Invoice } from "@/interfaces";
+import { currencyFormat } from "@/utils";
+import { formatWithOptions } from "util";
 
 interface Props {
   invoice: Invoice;
 }
 export const InvoiceDetails = ({ invoice }: Props) => {
   return (
-    <div className="mt-10 flex flex-col justify-center">
+    <>
       <div className="gap-5 text-5xl font-bold text-center">
-        Invoice: # {invoice.id.split("-").slice(-1)}{" "}
+        Invoice # {invoice.id.split("-").slice(-1)}{" "}
       </div>
 
-        <div className="mt-10 flex gap-10 sm:flex-nowrap flex-wrap">
+      <Card className="rounded-xl shadow-md text-center w-full mt-5">
+        <CardBody>
+          <div className="flex flex-col items-center gap-3">
+            <Image
+              alt="nextui logo"
+              height={80}
+              width={80}
+              src={`https://ui-avatars.com/api/?name=${invoice.place}&rounded=true&bold=true&background=FF6666`}
+            />
+            <h1>{invoice.place}</h1>
+            <p className="text-gray-400">{`"${invoice.description}..."`}</p>
+          </div>
+        </CardBody>
+      </Card>
+
+      <div className="mt-10 flex flex-col justify-center">
+        <div className="mt-10 w-full flex gap-10 sm:flex-nowrap flex-wrap">
           <Card className="group">
             <Image
               alt="Card background"
@@ -31,7 +51,27 @@ export const InvoiceDetails = ({ invoice }: Props) => {
               <AiTwotoneBank className="mr-2 text-gray-300" size={80} />
             </CardBody>
           </Card>
+
+          <Card className="group">
+            <CardBody className="flex flex-row justify-center items-center overflow-hidden">
+              <div className="flex-col justify-center text-center">
+                <div className="flex justify-center items-center transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <FaMoneyBill className="mr-2 text-green-800" size={100} />
+                </div>
+                <p className="text-tiny uppercase font-bold text-center">
+                  Total
+                </p>
+                <div className="flex flex-row font-bold text-7xl items-center">
+                  <span className="text-red-600">
+                    {currencyFormat(invoice.total)}
+                  </span>
+                  <FaArrowDown className="ml-2 text-red-600" size={50} />
+                </div>
+              </div>
+            </CardBody>
+          </Card>
         </div>
-    </div>
+      </div>
+    </>
   );
 };
