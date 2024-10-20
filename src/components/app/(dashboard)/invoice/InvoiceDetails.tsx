@@ -1,11 +1,6 @@
 import { Card, CardBody, CardHeader, Chip, Input } from "@nextui-org/react";
 import { FaArrowDown, FaX } from "react-icons/fa6";
-import {
-  FaCheckCircle,
-  FaCross,
-  FaCrosshairs,
-  FaMoneyBill,
-} from "react-icons/fa";
+import { FaCheckCircle, FaMoneyBill } from "react-icons/fa";
 
 import { AiTwotoneBank } from "react-icons/ai";
 import Image from "next/image";
