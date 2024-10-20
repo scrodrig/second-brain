@@ -14,7 +14,7 @@ export default function DashboardLayout({
       <div className="flex">
         <SidebarContainer />
         <NavbarWrapper>
-          <div className="w-full px-5 sm:px-10 mt-5 sm:mt-10">{children}</div>
+          <div className="w-full px-5 sm:px-10 mt-5">{children}</div>
         </NavbarWrapper>
       </div>
     </main>
