@@ -4,7 +4,7 @@
 
 # Second brain
 
-This projects is addressed to build a solution for a **Second Brain** a quite popular template for Notion
+This project is addressed to build a solution for a **Second Brain**, a quite popular template for Notion.
 
 [Second brain template](https://www.notion.so/templates/second-brain)
 
