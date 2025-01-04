@@ -1,8 +1,16 @@
 "use server";
 
-import { invoices } from "./data/invoices.data";
+import prisma from '@/lib/prisma'
 
 export const getInvoiceById = async (id: string) => {
-  // Simulate a delay
-  return await invoices.find((invoice) => invoice.id === id);
+  const invoice = await prisma.invoice.findUnique({
+    where: {
+      id,
+    },
+  })
+  if (!invoice) throw new Error(`Order ${id} not found`)
+    return {
+      success: true,
+      invoice,
+    }
 };
