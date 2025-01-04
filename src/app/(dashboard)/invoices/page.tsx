@@ -1,13 +1,30 @@
-import { InvoiceGrid } from "@/components";
-import { getInvoices } from "@/actions";
+export const revalidate = 300 // 1 minute
 
-export default async function InvoicePage() {
-  // TODO: Provide a list of invoices for testing
-  const { invoices } = await getInvoices();
+import { InvoiceGrid, Pagination } from "@/components";
+
+import { getInvoices } from "@/actions";
+import { redirect } from "next/navigation";
+
+interface Props {
+  searchParams: {
+    page?: number;
+  };
+}
+
+export default async function InvoicePage({ searchParams }: Props) {
+  const page = searchParams.page ? Number(searchParams.page) : 1;
+
+  const { invoices, totalPages } = await getInvoices({ page });
+
+  if (invoices.length === 0) {
+    redirect('/')
+  }
+
 
   return (
     <div>
       <InvoiceGrid invoices={invoices} />
+      <Pagination totalPages={totalPages} />
     </div>
   );
 }
