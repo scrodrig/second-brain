@@ -2,15 +2,16 @@ export interface Invoice {
   id: string;
   date: Date;
   place: string;
-  nif: string;
-  concept: InvoiceConcept;
-  description: string;
+  NIF: string;
+  concept: Concept | null;
+  description: string | null;
   owner: string;
-  account: string;
+  account: Account;
   total: number;
   isReembursable: boolean;
   isRefunded: boolean;
-  vatRefund?: boolean;
+  vatRefund: boolean | null;
 }
 
-export type InvoiceConcept = "Meal" | "Technology" | "Internet" | "Electricity" | "Education" | "Transportation" | "Others";
+export type Concept = "Meal" | "Technology" | "Internet" | "Electricity" | "Education" | "Transportation" | "Others";
+export type Account = "Personal" | "Business";
