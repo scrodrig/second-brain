@@ -33,7 +33,7 @@ model Invoice {
   date           DateTime @default(now())
   place          String
   NIF            String
-  concept        Concept?
+  concept        Concept
   description    String?
   owner          String
   account        Account
