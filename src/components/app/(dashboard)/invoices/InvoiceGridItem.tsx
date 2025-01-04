@@ -79,14 +79,13 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
       <Divider />
       <CardBody className="flex items">
         <div className="p-4 flex flex-col h-fit">
-          <p className="font-light mt-0">Price:</p>
-          <div className="text-5xl text-right">
+          <div className="text-5xl text-center font-bold">
             <div className="font-semibold text-green-800 dark:text-gray-50 hover:text-green-700 hover:font-bold transition-colors duration-150 ease-in-out">
               {currencyFormat(invoice.total)}
             </div>
           </div>
 
-          <blockquote className=" text-center font-light mt-5 text-ellipsis">{`"${invoice.description}"`}</blockquote>
+          <blockquote className=" text-center font-light mt-5 text-ellipsis italic">{`"${invoice.description}"`}</blockquote>
 
           <div className="mt-3 flex justify-start items-center">
             <IoCalendarOutline className="mr-2 text-sky-600" size={20} />
@@ -127,7 +126,7 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
             endContent={<GrLinkNext />}
             onClick={() => router.push(`/invoice/${invoice.id}`)}
           >
-            See more
+            Details
           </Button>
         </div>
       </CardFooter>
