@@ -3,7 +3,7 @@ export interface Invoice {
   date: Date;
   place: string;
   NIF: string;
-  concept: Concept | null;
+  concept: Concept;
   description: string | null;
   owner: string;
   account: Account;

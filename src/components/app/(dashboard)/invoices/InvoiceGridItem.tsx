@@ -51,7 +51,7 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
               size="md"
               variant="shadow"
               classNames={{
-                base: CONCEPT_COLORS[invoice.concept!].className,
+                base: CONCEPT_COLORS[invoice.concept].className,
                 content: "drop-shadow shadow-black text-white",
               }}
             >

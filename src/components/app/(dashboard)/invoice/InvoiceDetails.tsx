@@ -94,7 +94,7 @@ export const InvoiceDetails = ({ invoice }: Props) => {
                 className="mt-5"
                 type="string"
                 label="NIF"
-                value={invoice.nif}
+                value={invoice.NIF}
                 readOnly
               />
 
