@@ -14,7 +14,7 @@ interface Props {
 export default async function InvoicePage({ searchParams }: Props) {
   const page = searchParams.page ? Number(searchParams.page) : 1;
 
-  const { invoices, totalPages } = await getInvoices({ page });
+  const { invoices, totalPages } = await getInvoices({ page, take: 8 });
 
   if (invoices.length === 0) {
     redirect('/')
