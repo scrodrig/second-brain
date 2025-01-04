@@ -1,8 +1,17 @@
 'use server'
 
-import { invoices } from "./data/invoices.data"
+import prisma from '@/lib/prisma'
 
 export const getInvoices = async () => {
-  // Simulate a delay
-  return await invoices;
+
+  const invoices = await prisma.invoice.findMany({
+    orderBy: {
+      date: 'desc',
+    },
+  })
+
+  return {
+    success: true,
+    invoices: invoices,
+  }
 }
