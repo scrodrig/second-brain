@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 
-import { InvoiceConcept } from "@/interfaces";
+import { Concept } from "@/interfaces";
 import { IoCalendar } from "react-icons/io5";
 
-export const CONCEPT_COLORS_GRADIENT: Record<InvoiceConcept, string> = {
+export const CONCEPT_COLORS_GRADIENT: Record<Concept, string> = {
   Meal: "bg-gradient-to-br from-indigo-500 to-pink-500 border-small border-white/50 shadow-pink-500/30",
   Transportation:
     "bg-gradient-to-br from-pink-500 to-indigo-500 border-small border-white/50 shadow-green-500/30",
@@ -20,7 +20,7 @@ export const CONCEPT_COLORS_GRADIENT: Record<InvoiceConcept, string> = {
 };
 
 export const CONCEPT_COLORS: Record<
-  InvoiceConcept,
+  Concept,
   { className: string; icon: ReactNode }
 > = {
   Meal: { className: "bg-green-300", icon: <IoCalendar /> },
