@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Invoice" ALTER COLUMN "vatRefund" DROP NOT NULL,
+ALTER COLUMN "vatRefund" DROP DEFAULT;
