@@ -1,6 +1,6 @@
 export const revalidate = 300 // 1 minute
 
-import { InvoiceGrid, Pagination } from "@/components";
+import { InvoiceGrid, Pagination, Title } from "@/components";
 
 import { getInvoices } from "@/actions";
 import { redirect } from "next/navigation";
@@ -23,6 +23,7 @@ export default async function InvoicePage({ searchParams }: Props) {
 
   return (
     <div>
+      <Title title="Invoices" />
       <InvoiceGrid invoices={invoices} />
       <Pagination totalPages={totalPages} />
     </div>
