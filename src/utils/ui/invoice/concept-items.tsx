@@ -2,7 +2,6 @@ import { FaBowlFood, FaBus, FaChrome, FaComputer } from "react-icons/fa6";
 import React, { ReactNode } from "react";
 
 import { Concept } from "@/interfaces";
-import { IoCalendar } from "react-icons/io5";
 import { IoMdSchool } from "react-icons/io";
 import { MdElectricBolt } from "react-icons/md";
 import { VscSymbolMisc } from "react-icons/vsc";
@@ -23,7 +22,7 @@ export const CONCEPT_COLORS_GRADIENT: Record<Concept, string> = {
     "bg-gradient-to-br from-indigo-500 to-red-500 border-small border-white/50 shadow-red-500/30",
 };
 
-export const CONCEPT_COLORS: Record<
+export const CONCEPT_UI_ITEMS: Record<
   Concept,
   { className: string; icon: ReactNode }
 > = {

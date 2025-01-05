@@ -12,7 +12,7 @@ import {
 import { Controller, useForm } from "react-hook-form";
 
 import { BlockRadio } from "@/components";
-import { CONCEPT_COLORS } from "@/utils";
+import { CONCEPT_UI_ITEMS } from "@/utils";
 import { Form } from "@nextui-org/form";
 import { IoCalendarOutline } from "react-icons/io5";
 import clsx from "clsx";
@@ -122,7 +122,7 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
                 value={concept}
               >
                 <div className="flex items-center">
-                  {CONCEPT_COLORS[concept].icon}
+                  {CONCEPT_UI_ITEMS[concept].icon}
                   {concept}
                 </div>
               </BlockRadio>

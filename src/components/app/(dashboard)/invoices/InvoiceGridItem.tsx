@@ -9,7 +9,7 @@ import {
   Chip,
   Divider,
 } from "@nextui-org/react";
-import { CONCEPT_COLORS, currencyFormat } from "@/utils";
+import { CONCEPT_UI_ITEMS, currencyFormat } from "@/utils";
 
 import { AiTwotoneBank } from "react-icons/ai";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
@@ -51,12 +51,12 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
               size="lg"
               variant="shadow"
               classNames={{
-                base: CONCEPT_COLORS[invoice.concept].className,
+                base: CONCEPT_UI_ITEMS[invoice.concept].className,
                 content: "drop-shadow shadow-black dark:shadow-white text-black",
               }}
             >
               <div className="flex items-center">
-                {CONCEPT_COLORS[invoice.concept].icon}
+                {CONCEPT_UI_ITEMS[invoice.concept].icon}
                 {invoice.concept}
               </div>
             </Chip>
