@@ -48,14 +48,17 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
           <div className="flex flex-col w-full justify-center items-center">
             <Divider className="mb-2" />
             <Chip
-              size="md"
+              size="lg"
               variant="shadow"
               classNames={{
                 base: CONCEPT_COLORS[invoice.concept].className,
-                content: "drop-shadow shadow-black text-white",
+                content: "drop-shadow shadow-black dark:shadow-white text-black",
               }}
             >
-              {invoice.concept}
+              <div className="flex items-center">
+                {CONCEPT_COLORS[invoice.concept].icon}
+                {invoice.concept}
+              </div>
             </Chip>
           </div>
           <Divider className="mt-3 mb-4" />
