@@ -105,9 +105,10 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
           />
         </div>
 
-        <div className="flex flex-col mb-2">
+        <div className="mb-2">
           <RadioGroup
             color="primary"
+            size="lg"
             label="What is the concept?"
             errorMessage="Please select a concept"
             isInvalid={!!errors.concept}
@@ -118,6 +119,7 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
                 key={concept}
                 description={`Related to ${concept} expenses`}
                 value={concept}
+                className="w-full"
               >
                 {concept}
               </BlockRadio>
@@ -167,10 +169,9 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
           ></Textarea>
         </div>
 
-        <div className="flex flex-col mb-2">
+        <div className="mb-2">
           <RadioGroup
             color="primary"
-            orientation="horizontal"
             label="What is the account?"
             errorMessage="Please select an account"
             isInvalid={!!errors.account}
@@ -188,7 +189,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
           </RadioGroup>
         </div>
       </div>
-
 
       <Button type="submit" variant="flat" color="primary" className="w-full">
         Save
