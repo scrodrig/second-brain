@@ -1,8 +1,8 @@
 "use client";
 
-import {VisuallyHidden, cn, useRadio} from "@nextui-org/react";
+import { VisuallyHidden, cn, useRadio } from "@nextui-org/react";
 
-export const BlockRadio = (props:any) => {
+export const BlockRadio = (props: any) => {
   const {
     Component,
     children,
@@ -21,7 +21,7 @@ export const BlockRadio = (props:any) => {
       className={cn(
         "group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent",
         "max-w-full cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
-        "data-[selected=true]:border-primary data-[selected=true]:bg-primary-200",
+        "data-[selected=true]:border-primary data-[selected=true]:bg-primary-100"
       )}
     >
       <VisuallyHidden>
