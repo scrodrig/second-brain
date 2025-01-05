@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 import { Invoice } from "@/interfaces";
 import { InvoiceGridItem } from "./InvoiceGridItem";
 import { IoMdAdd } from "react-icons/io";
@@ -11,7 +10,7 @@ export const InvoiceGrid = ({ invoices }: Props) => {
   return (
     <>
       <div className="flex justify-end mb-5">
-        <Link href="/invoices/new" className="btn-primary">
+        <Link href="/invoices/new?slug=new" className="btn-primary">
           <IoMdAdd />
         </Link>
       </div>
