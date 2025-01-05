@@ -48,4 +48,4 @@ Please adhere to this project's `code of conduct`.
 
 Todos los derechos reservados © scrodrig 2025
 
-This code is protected by copyright. Its use, copying, modification, or distribution is strictly prohibited without the explicit written permission of the author.
+<sub>*This code is protected by copyright. Its use, copying, modification, or distribution is strictly prohibited without the explicit written permission of the author.*</sub>
