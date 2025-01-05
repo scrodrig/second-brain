@@ -13,8 +13,6 @@ This project is addressed to build a solution for a **Second Brain**, a quite po
 
 Add badges from somewhere like: [shields.io](https://shields.io/)
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
 
@@ -47,3 +45,7 @@ Please adhere to this project's `code of conduct`.
 
 **Server:** NextJS, Prisma, PostgreSQL
 
+
+Todos los derechos reservados © scrodrig 2025
+
+This code is protected by copyright. Its use, copying, modification, or distribution is strictly prohibited without the explicit written permission of the author.
