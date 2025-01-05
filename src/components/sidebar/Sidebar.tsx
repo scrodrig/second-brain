@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { CollapseItems } from "./CollapseItems";
 import { FaAustralSign } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
+import { Footer } from "../ui/footer/Footer";
 import Image from "next/image";
 import { Sidebar } from "./sidebar.styles";
 import { SidebarItem } from "./SidebarItem";
@@ -130,6 +131,7 @@ export const SidebarContainer = () => {
               />
             </Tooltip>
           </div> */}
+          <Footer />
         </div>
       </div>
     </aside>
