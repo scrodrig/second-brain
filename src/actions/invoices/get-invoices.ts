@@ -32,6 +32,6 @@ export const getInvoices = async ({
       invoices: invoices,
     };
   } catch (e) {
-    throw new Error("Products not loaded");
+    throw new Error("Invoices not loaded");
   }
 };
