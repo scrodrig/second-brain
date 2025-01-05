@@ -1,9 +1,11 @@
+import { Account, Concept } from "@/interfaces";
 import { FaBowlFood, FaBus, FaChrome, FaComputer } from "react-icons/fa6";
+import { MdElectricBolt, MdOutlineFamilyRestroom } from "react-icons/md";
 import React, { ReactNode } from "react";
 
-import { Concept } from "@/interfaces";
+import { BsPersonFill } from "react-icons/bs";
+import { IoBusiness } from "react-icons/io5";
 import { IoMdSchool } from "react-icons/io";
-import { MdElectricBolt } from "react-icons/md";
 import { VscSymbolMisc } from "react-icons/vsc";
 
 export const CONCEPT_COLORS_GRADIENT: Record<Concept, string> = {
@@ -53,5 +55,23 @@ export const CONCEPT_UI_ITEMS: Record<
   Others: {
     className: "bg-gray-500",
     icon: <VscSymbolMisc className="mr-2" size={20} />,
+  },
+};
+
+export const ACCOUNT_UI_ITEMS: Record<
+  Account | "Shared",
+  { className: string; icon: ReactNode }
+> = {
+  Business: {
+    className: "bg-green-300",
+    icon: <IoBusiness className="mr-2" size={20} />,
+  },
+  Personal: {
+    className: "bg-red-300",
+    icon: <BsPersonFill className="mr-2" size={20} />,
+  },
+  Shared: {
+    className: "bg-amber-300",
+    icon: <MdOutlineFamilyRestroom className="mr-2" size={20} />,
   },
 };

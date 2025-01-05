@@ -1,21 +1,12 @@
 "use client";
 
+import { ACCOUNT_UI_ITEMS, CONCEPT_UI_ITEMS } from "@/utils";
 import { Account, Concept, Invoice } from "@/interfaces";
-import {
-  Button,
-  DatePicker,
-  Input,
-  Radio,
-  RadioGroup,
-  Textarea,
-} from "@nextui-org/react";
-import { Controller, useForm } from "react-hook-form";
+import { Button, Input, RadioGroup, Textarea } from "@nextui-org/react";
 
 import { BlockRadio } from "@/components";
-import { CONCEPT_UI_ITEMS } from "@/utils";
 import { Form } from "@nextui-org/form";
-import { IoCalendarOutline } from "react-icons/io5";
-import clsx from "clsx";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 interface Props {
@@ -107,31 +98,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
           />
         </div>
 
-        <div className="mb-2">
-          <RadioGroup
-            color="primary"
-            size="lg"
-            label="What is the concept?"
-            errorMessage="Please select a concept"
-            isInvalid={!!errors.concept}
-            {...register("concept", { required: true })}
-          >
-            {concepts?.map((concept) => (
-              <BlockRadio
-                key={concept}
-                value={concept}
-              >
-                <div className="flex items-center">
-                  {CONCEPT_UI_ITEMS[concept].icon}
-                  {concept}
-                </div>
-              </BlockRadio>
-            ))}
-          </RadioGroup>
-        </div>
-      </div>
-
-      <div className="w-full">
         <div className="flex flex-col mb-2">
           <Input
             isRequired
@@ -171,6 +137,28 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
             {...register("description", { maxLength: 200 })}
           ></Textarea>
         </div>
+      </div>
+
+      <div className="w-full">
+        <div className="mb-2">
+          <RadioGroup
+            color="primary"
+            size="lg"
+            label="What is the concept?"
+            errorMessage="Please select a concept"
+            isInvalid={!!errors.concept}
+            {...register("concept", { required: true })}
+          >
+            {concepts?.map((concept) => (
+              <BlockRadio key={concept} value={concept}>
+                <div className="flex items-center">
+                  {CONCEPT_UI_ITEMS[concept].icon}
+                  {concept}
+                </div>
+              </BlockRadio>
+            ))}
+          </RadioGroup>
+        </div>
 
         <div className="mb-2">
           <RadioGroup
@@ -186,7 +174,10 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
                 description={`This expense was issued by ${account}`}
                 value={account}
               >
-                {account}
+                <div className="flex items-center">
+                  {ACCOUNT_UI_ITEMS[account].icon}
+                  {account}
+                </div>
               </BlockRadio>
             ))}
           </RadioGroup>
