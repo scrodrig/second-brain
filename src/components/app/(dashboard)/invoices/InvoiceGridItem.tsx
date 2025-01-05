@@ -127,7 +127,7 @@ export const InvoiceGridItem = ({ invoice }: Props) => {
             color="primary"
             variant="solid"
             endContent={<GrLinkNext />}
-            onClick={() => router.push(`/invoice/${invoice.id}`)}
+            onPress={() => router.push(`/invoice/${invoice.id}`)}
           >
             Details
           </Button>
