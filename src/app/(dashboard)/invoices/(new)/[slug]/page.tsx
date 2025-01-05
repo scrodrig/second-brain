@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default async function InvoicePage({ params }: Props) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const title = slug === "new" ? "New Invoice" : "Edit Invoice";
 
