@@ -1,7 +1,8 @@
-export const revalidate = 300 // 1 minute
+export const revalidate = 300; // 1 minute
 
 import { InvoiceGrid, Pagination, Title } from "@/components";
 
+import { Button } from "@nextui-org/react";
 import { getInvoices } from "@/actions";
 import { redirect } from "next/navigation";
 
@@ -17,9 +18,8 @@ export default async function InvoicePage({ searchParams }: Props) {
   const { invoices, totalPages } = await getInvoices({ page, take: 8 });
 
   if (invoices.length === 0) {
-    redirect('/')
+    redirect("/");
   }
-
 
   return (
     <div>
