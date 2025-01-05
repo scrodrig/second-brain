@@ -12,7 +12,9 @@ import {
 import { Controller, useForm } from "react-hook-form";
 
 import { BlockRadio } from "@/components";
+import { CONCEPT_COLORS } from "@/utils";
 import { Form } from "@nextui-org/form";
+import { IoCalendarOutline } from "react-icons/io5";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 
@@ -117,11 +119,12 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
             {concepts?.map((concept) => (
               <BlockRadio
                 key={concept}
-                description={`Related to ${concept} expenses`}
                 value={concept}
-                className="w-full"
               >
-                {concept}
+                <div className="flex items-center">
+                  {CONCEPT_COLORS[concept].icon}
+                  {concept}
+                </div>
               </BlockRadio>
             ))}
           </RadioGroup>
