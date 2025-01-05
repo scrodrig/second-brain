@@ -8,7 +8,8 @@ interface Props {
   };
 }
 
-export default async function InvoicePage({ params: { id } }: Props) {
+export default async function InvoicePage({ params }: Props) {
+  const { id } = await params;
   const { invoice } = await getInvoiceById(id);
 
   if (!invoice) {
