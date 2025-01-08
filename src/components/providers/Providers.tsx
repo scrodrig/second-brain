@@ -2,9 +2,9 @@
 
 import * as React from "react";
 
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider } from "next-themes";
 import { NextUIProvider } from "@nextui-org/system";
-import { ThemeProviderProps } from "next-themes/dist/types";
+import { ThemeProviderProps } from "next-themes";
 
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -14,12 +14,12 @@ export interface ProvidersProps {
 export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <NextUIProvider>
-      <NextThemesProvider
+      <ThemeProvider
         defaultTheme='system'
         attribute='class'
         {...themeProps}>
         {children}
-      </NextThemesProvider>
+      </ThemeProvider>
     </NextUIProvider>
   );
 }
