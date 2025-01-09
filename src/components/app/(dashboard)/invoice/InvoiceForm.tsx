@@ -2,12 +2,20 @@
 
 import { ACCOUNT_UI_ITEMS, CONCEPT_UI_ITEMS } from "@/utils";
 import { Account, Concept, Invoice } from "@/interfaces";
-import { Button, Input, RadioGroup, Textarea } from "@nextui-org/react";
+import {
+  Button,
+  Checkbox,
+  Chip,
+  Input,
+  RadioGroup,
+  Textarea,
+} from "@nextui-org/react";
 
-import { BlockRadio } from "@/components";
+import { BlockCheckbox, BlockRadio } from "@/components";
 import { Form } from "@nextui-org/form";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 interface Props {
   invoice: Partial<Invoice>;
@@ -51,14 +59,12 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <Form
       onSubmit={handleSubmit(onSubmit)}
-      method="post"
       validationBehavior="native"
       className="grid px-5 mb-16 grid-cols-1 sm:px-0 sm:grid-cols-2 gap-3"
     >
       <div className="w-full">
         <div className="flex flex-col mb-2">
           <Input
-            isRequired
             size="lg"
             errorMessage="Please enter a valid NIF"
             isInvalid={!!errors.NIF}
@@ -72,7 +78,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
 
         <div className="flex flex-col mb-2">
           <Input
-            isRequired
             size="lg"
             errorMessage="Please enter a valid place"
             isInvalid={!!errors.place}
@@ -86,7 +91,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
 
         <div className="flex flex-col mb-2">
           <Input
-            isRequired
             size="lg"
             errorMessage="Please enter a valid owner"
             isInvalid={!!errors.owner}
@@ -100,7 +104,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
 
         <div className="flex flex-col mb-2">
           <Input
-            isRequired
             size="lg"
             errorMessage="Please enter a valid total amount"
             isInvalid={!!errors.total}
@@ -114,7 +117,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
 
         <div className="flex flex-col mb-2">
           <Input
-            isRequired
             size="lg"
             errorMessage="Please enter a valid date"
             isInvalid={!!errors.date}
@@ -122,6 +124,17 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
             labelPlacement="outside"
             type="date"
             {...register("date", { required: true })}
+          />
+        </div>
+
+        <div className="flex flex-col items-center justify-center mb-2">
+          <BlockCheckbox
+            title={"Is it reembursable?"}
+            color="warning"
+            description={
+              "If the expense is reembursable, you can get the money back."
+            }
+            {...register("isReembursable")}
           />
         </div>
 
@@ -142,18 +155,17 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
       <div className="w-full">
         <div className="mb-2">
           <RadioGroup
-            color="primary"
-            size="lg"
             label="What is the concept?"
+            size="lg"
             errorMessage="Please select a concept"
             isInvalid={!!errors.concept}
             {...register("concept", { required: true })}
           >
-            {concepts?.map((concept) => (
-              <BlockRadio key={concept} value={concept}>
+            {concepts?.map((concpt) => (
+              <BlockRadio key={concpt} value={concpt} {...register("concept")} color="secondary">
                 <div className="flex items-center">
-                  {CONCEPT_UI_ITEMS[concept].icon}
-                  {concept}
+                  {CONCEPT_UI_ITEMS[concpt].icon}
+                  {concpt}
                 </div>
               </BlockRadio>
             ))}
@@ -162,7 +174,6 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
 
         <div className="mb-2">
           <RadioGroup
-            color="primary"
             label="What is the account?"
             errorMessage="Please select an account"
             isInvalid={!!errors.account}
@@ -170,9 +181,11 @@ export const InvoiceForm = ({ invoice, concepts, accounts }: Props) => {
           >
             {accounts?.map((account) => (
               <BlockRadio
+                color="warning"
                 key={account}
                 description={`This expense was issued by ${account}`}
                 value={account}
+                {...register("account")}
               >
                 <div className="flex items-center">
                   {ACCOUNT_UI_ITEMS[account].icon}
