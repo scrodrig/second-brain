@@ -1,8 +1,12 @@
 "use client";
 
-import { VisuallyHidden, cn, useRadio } from "@nextui-org/react";
+import { getColorSelectorForRadio } from "@/utils";
+import { VisuallyHidden, cn, useRadio, RadioProps } from "@nextui-org/react";
+import clsx from "clsx";
 
-export const BlockRadio = (props: any) => {
+export const BlockRadio = (props: RadioProps) => {
+  const { color } = props;
+
   const {
     Component,
     children,
@@ -16,14 +20,7 @@ export const BlockRadio = (props: any) => {
   } = useRadio(props);
 
   return (
-    <Component
-      {...getBaseProps()}
-      className={cn(
-        "group inline-flex items-center hover:opacity-70 active:opacity-50 justify-between flex-row-reverse tap-highlight-transparent",
-        "max-w-full cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
-        "data-[selected=true]:border-primary data-[selected=true]:bg-primary-100"
-      )}
-    >
+    <Component {...getBaseProps()} className={getColorSelectorForRadio(color)}>
       <VisuallyHidden>
         <input {...getInputProps()} />
       </VisuallyHidden>
@@ -33,7 +30,9 @@ export const BlockRadio = (props: any) => {
       <div {...getLabelWrapperProps()}>
         {children && <span {...getLabelProps()}>{children}</span>}
         {description && (
-          <span className="text-small text-foreground opacity-70">{description}</span>
+          <span className="text-small text-foreground opacity-70">
+            {description}
+          </span>
         )}
       </div>
     </Component>
