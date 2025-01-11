@@ -44,8 +44,3 @@ Please adhere to this project's `code of conduct`.
 **Client:** NextJS, React, Zustand, TailwindCSS
 
 **Server:** NextJS, Prisma, PostgreSQL
-
-
-Todos los derechos reservados © scrodrig 2025
-
-<sub>*This code is protected by copyright. Its use, copying, modification, or distribution is strictly prohibited without the explicit written permission of the author.*</sub>
