@@ -1,8 +1,7 @@
 "use client";
 
 import { getColorSelectorForRadio } from "@/utils";
-import { VisuallyHidden, cn, useRadio, RadioProps } from "@nextui-org/react";
-import clsx from "clsx";
+import { VisuallyHidden, useRadio, RadioProps } from "@nextui-org/react";
 
 export const BlockRadio = (props: RadioProps) => {
   const { color } = props;
