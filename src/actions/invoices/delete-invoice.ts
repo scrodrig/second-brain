@@ -2,9 +2,9 @@
 
 import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
-import { notFound } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
-export async function getInvoiceById(id: string) {
+export async function deleteInvoice(id: string) {
   const session = await auth();
   if (!session?.user?.id) throw new Error("Unauthorized");
 
@@ -13,9 +13,9 @@ export async function getInvoiceById(id: string) {
       id,
       household: { members: { some: { userId: session.user.id } } },
     },
-    include: { createdBy: { select: { name: true, image: true } } },
   });
+  if (!invoice) throw new Error("Invoice not found or unauthorized");
 
-  if (!invoice) notFound();
-  return invoice;
+  await prisma.invoice.delete({ where: { id } });
+  revalidatePath("/invoices");
 }
