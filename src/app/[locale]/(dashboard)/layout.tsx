@@ -1,18 +1,6 @@
-import { NavbarWrapper, SidebarContainer } from "@/components";
+import { DashboardTemplate } from "@/components/templates/DashboardTemplate";
+import type { ReactNode } from "react";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <main className="min-h-screen">
-      <div className="flex">
-        <SidebarContainer />
-        <NavbarWrapper>
-          <div className="w-full px-5 sm:px-10 mt-5">{children}</div>
-        </NavbarWrapper>
-      </div>
-    </main>
-  );
+export default function DashboardLayout({ children }: { children: ReactNode }) {
+  return <DashboardTemplate>{children}</DashboardTemplate>;
 }
