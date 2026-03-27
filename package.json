@@ -13,7 +13,6 @@
     "@heroui/react": "^3.0.1",
     "@heroui/theme": "^2.4.26",
     "@prisma/client": "^6.1.0",
-    "@tailwindcss/vite": "^4.2.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.16.1",
     "next": "15.1.3",
