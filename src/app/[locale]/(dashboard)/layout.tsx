@@ -1,5 +1,3 @@
-import "@/app/globals.css";
-
 import { NavbarWrapper, SidebarContainer } from "@/components";
 
 export default function DashboardLayout({
