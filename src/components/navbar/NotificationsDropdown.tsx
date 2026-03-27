@@ -7,7 +7,7 @@ import {
   DropdownSection,
   DropdownTrigger,
   NavbarItem,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 import { MdOutlineNotifications } from "react-icons/md";
 

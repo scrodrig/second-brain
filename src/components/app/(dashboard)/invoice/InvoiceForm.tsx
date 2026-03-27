@@ -2,10 +2,9 @@
 
 import { ACCOUNT_UI_ITEMS, CONCEPT_UI_ITEMS } from '@/utils'
 import { Account, Concept, Invoice } from '@/interfaces'
-import { Button, Input, RadioGroup, Textarea } from '@nextui-org/react'
+import { Button, Form, Input, RadioGroup, Textarea } from '@heroui/react'
 
 import { BlockCheckbox, BlockRadio } from '@/components'
-import { Form } from '@nextui-org/form'
 import { useForm } from 'react-hook-form'
 
 type Props = {

@@ -2,7 +2,7 @@ export const revalidate = 300; // 1 minute
 
 import { InvoiceGrid, Pagination, Title } from "@/components";
 
-import { cn } from "@nextui-org/react";
+import { cn } from "@heroui/react";
 import { getInvoices } from "@/actions";
 import { redirect } from "next/navigation";
 

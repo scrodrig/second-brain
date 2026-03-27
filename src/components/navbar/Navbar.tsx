@@ -1,7 +1,7 @@
 "use client";
 
 import { FcFeedback, FcSupport } from "react-icons/fc";
-import { Link, Navbar, NavbarContent } from "@nextui-org/react";
+import { Link, Navbar, NavbarContent } from "@heroui/react";
 
 import { BurguerButton } from "./BurgerButton";
 import { NavbarBreadcums } from "./NavbarBreadcums";

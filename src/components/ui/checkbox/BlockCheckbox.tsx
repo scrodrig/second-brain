@@ -1,7 +1,7 @@
 "use client";
 
 import { getColorSelectorForCheckbox } from "@/utils";
-import { Checkbox } from "@nextui-org/react";
+import { Checkbox } from "@heroui/react";
 import clsx from "clsx";
 
 export const BlockCheckbox = (props: any) => {

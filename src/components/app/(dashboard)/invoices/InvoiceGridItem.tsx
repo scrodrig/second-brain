@@ -8,7 +8,7 @@ import {
   CardHeader,
   Chip,
   Divider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { CONCEPT_UI_ITEMS, currencyFormat } from "@/utils";
 
 import { AiTwotoneBank } from "react-icons/ai";

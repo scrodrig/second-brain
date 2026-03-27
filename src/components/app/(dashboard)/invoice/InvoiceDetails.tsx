@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardBody, CardHeader, Chip, Input } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Chip, Input } from "@heroui/react";
 import { FaArrowDown, FaX } from "react-icons/fa6";
 import { FaCheckCircle, FaMoneyBill } from "react-icons/fa";
 
