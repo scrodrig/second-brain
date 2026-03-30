@@ -11,7 +11,7 @@ export default auth((req) => {
 
   // Strip locale prefix for auth check
   const isAuthRoute = /^\/(en|es|pt)?\/?(login|register)/.test(pathname);
-  const isPublicRoute = isAuthRoute || pathname.startsWith("/api");
+  const isPublicRoute = isAuthRoute;
 
   if (!isLoggedIn && !isPublicRoute) {
     const loginUrl = new URL("/login", req.nextUrl);
@@ -22,5 +22,6 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  // Exclude API routes and static assets — let Next.js handle them directly
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };
