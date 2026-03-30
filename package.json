@@ -12,6 +12,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
     "@heroui/react": "^3.0.1",
+    "@heroui/styles": "^3.0.1",
     "@heroui/theme": "^2.4.26",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "^6.1.0",
