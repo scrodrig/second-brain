@@ -1,19 +1,20 @@
-import { auth } from "@/lib/auth";
+import NextAuth from "next-auth";
+import { authConfig } from "@/lib/auth.config";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "@/i18n/routing";
 import { NextResponse } from "next/server";
 
+// Use edge-compatible auth (no Prisma) for middleware session checks
+const { auth } = NextAuth(authConfig);
 const intlMiddleware = createMiddleware(routing);
 
 export default auth((req) => {
   const isLoggedIn = !!req.auth;
   const pathname = req.nextUrl.pathname;
 
-  // Strip locale prefix for auth check
   const isAuthRoute = /^\/(en|es|pt)?\/?(login|register)/.test(pathname);
-  const isPublicRoute = isAuthRoute;
 
-  if (!isLoggedIn && !isPublicRoute) {
+  if (!isLoggedIn && !isAuthRoute) {
     const loginUrl = new URL("/login", req.nextUrl);
     return NextResponse.redirect(loginUrl);
   }

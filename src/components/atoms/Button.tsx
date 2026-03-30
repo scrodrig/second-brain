@@ -5,7 +5,8 @@ import { cn } from "@/lib/utils";
 
 type LegacyColor = "primary" | "secondary" | "danger" | "default" | "warning" | "success";
 
-interface ButtonProps extends Omit<HeroButtonProps, "color"> {
+interface ButtonProps extends Omit<HeroButtonProps, "color" | "children"> {
+  children?: ReactNode;
   color?: LegacyColor;
   fullWidth?: boolean;
   isLoading?: boolean;

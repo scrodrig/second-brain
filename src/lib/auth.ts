@@ -1,20 +1,18 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import prisma from "./prisma";
+import { authConfig } from "./auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "database" },
+  session: { strategy: "jwt" },
   providers: [
-    Google({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
+    // Keep Google from authConfig, override Credentials with full DB logic
+    authConfig.providers[0],
     Credentials({
-      name: "credentials",
       credentials: {
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
@@ -38,12 +36,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, user }) {
-      session.user.id = user.id;
+    async jwt({ token, user }) {
+      if (user) token.id = user.id;
+      return token;
+    },
+    async session({ session, token }) {
+      if (token.id) session.user.id = token.id as string;
       return session;
     },
     async signIn({ user, account }) {
-      // Auto-create household for first-time Google OAuth users
       if (account?.provider === "google" && user.id) {
         const existing = await prisma.householdMember.findFirst({
           where: { userId: user.id },
@@ -53,14 +54,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             data: { name: `${user.name}'s Household` },
           });
           await prisma.householdMember.create({
-            data: { userId: user.id, householdId: household.id, role: "OWNER" },
+            data: {
+              userId: user.id,
+              householdId: household.id,
+              role: "OWNER",
+            },
           });
         }
       }
       return true;
     },
-  },
-  pages: {
-    signIn: "/login",
   },
 });
