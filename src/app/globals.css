@@ -1,5 +1,11 @@
 @import "tailwindcss";
-@import "@heroui/react/styles";
+
+/* HeroUI v3 — imported selectively to avoid toast.css view-transition syntax
+   unsupported by Turbopack's CSS parser */
+@import "@heroui/styles/base";
+@import "@heroui/styles/themes/default";
+@import "@heroui/styles/utilities";
+@import "@heroui/styles/variants";
 
 @theme {
   --font-sans: "Inter", sans-serif;
