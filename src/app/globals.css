@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@heroui/theme/styles.css";
+@import "@heroui/react/styles";
 
 @theme {
   --font-sans: "Inter", sans-serif;
