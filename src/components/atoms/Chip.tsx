@@ -8,14 +8,8 @@ interface ChipProps extends HeroChipProps {
 export function Chip({ startContent, children, ...props }: ChipProps) {
   return (
     <HeroChip size="sm" {...props}>
-      {startContent ? (
-        <span className="flex items-center gap-1">
-          {startContent}
-          {children}
-        </span>
-      ) : (
-        children
-      )}
+      {startContent}
+      <HeroChip.Label>{children}</HeroChip.Label>
     </HeroChip>
   );
 }
