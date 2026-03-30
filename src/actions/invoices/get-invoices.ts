@@ -1,37 +1,35 @@
 "use server";
 
+import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
-interface PaginationOptions {
-  page?: number;
-  take?: number;
+const PAGE_SIZE = 8;
+
+export async function getInvoices(page = 1) {
+  const session = await auth();
+  if (!session?.user?.id) throw new Error("Unauthorized");
+
+  const membership = await prisma.householdMember.findFirst({
+    where: { userId: session.user.id },
+  });
+  if (!membership) return { invoices: [], totalPages: 0, currentPage: 1 };
+
+  const [invoices, total] = await Promise.all([
+    prisma.invoice.findMany({
+      where: { householdId: membership.householdId },
+      include: { createdBy: { select: { name: true, image: true } } },
+      orderBy: { date: "desc" },
+      skip: (page - 1) * PAGE_SIZE,
+      take: PAGE_SIZE,
+    }),
+    prisma.invoice.count({
+      where: { householdId: membership.householdId },
+    }),
+  ]);
+
+  return {
+    invoices,
+    totalPages: Math.ceil(total / PAGE_SIZE),
+    currentPage: page,
+  };
 }
-
-export const getInvoices = async ({
-  page = 1,
-  take = 12,
-}: PaginationOptions) => {
-  try {
-    if (isNaN(Number(page))) page = 1;
-    if (page < 1) page = 1;
-
-    const invoices = await prisma.invoice.findMany({
-      take: take,
-      skip: (page - 1) * take,
-      orderBy: {
-        date: "desc",
-      },
-    });
-
-    const totalCount = await prisma.invoice.count({});
-    const totalPages = Math.ceil(totalCount / take);
-
-    return {
-      currentPage: page,
-      totalPages,
-      invoices: invoices,
-    };
-  } catch (e) {
-    throw new Error("Invoices not loaded");
-  }
-};

@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "invoices": "Invoices",
+    "household": "Household",
+    "settings": "Settings",
+    "signOut": "Sign out",
+    "home": "Home"
+  },
+  "invoice": {
+    "title": "Invoices",
+    "new": "New invoice",
+    "edit": "Edit invoice",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "place": "Place",
+    "nif": "VAT Number",
+    "total": "Total",
+    "date": "Date",
+    "description": "Description",
+    "concept": "Concept",
+    "account": "Account",
+    "reimbursable": "Reimbursable",
+    "refunded": "Refunded",
+    "vatRefund": "VAT Refund",
+    "scanReceipt": "Scan receipt",
+    "scanHint": "Take a photo of the receipt to auto-fill the form"
+  },
+  "concepts": {
+    "Meal": "Meal",
+    "Technology": "Technology",
+    "Internet": "Internet",
+    "Electricity": "Electricity",
+    "Education": "Education",
+    "Transportation": "Transportation",
+    "Others": "Others"
+  },
+  "accounts": {
+    "Personal": "Personal",
+    "Business": "Business"
+  },
+  "household": {
+    "title": "My household",
+    "members": "Members",
+    "invite": "Invite member",
+    "role": {
+      "OWNER": "Owner",
+      "MEMBER": "Member"
+    }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signInWithGoogle": "Continue with Google",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name"
+  }
+}

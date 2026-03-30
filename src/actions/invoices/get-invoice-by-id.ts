@@ -1,16 +1,21 @@
 "use server";
 
-import prisma from '@/lib/prisma'
+import { auth } from "@/lib/auth";
+import prisma from "@/lib/prisma";
+import { notFound } from "next/navigation";
 
-export const getInvoiceById = async (id: string) => {
-  const invoice = await prisma.invoice.findUnique({
+export async function getInvoiceById(id: string) {
+  const session = await auth();
+  if (!session?.user?.id) throw new Error("Unauthorized");
+
+  const invoice = await prisma.invoice.findFirst({
     where: {
       id,
+      household: { members: { some: { userId: session.user.id } } },
     },
-  })
-  if (!invoice) throw new Error(`Order ${id} not found`)
-    return {
-      success: true,
-      invoice,
-    }
-};
+    include: { createdBy: { select: { name: true, image: true } } },
+  });
+
+  if (!invoice) notFound();
+  return invoice;
+}

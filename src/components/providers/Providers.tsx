@@ -1,25 +1,15 @@
 "use client";
 
-import * as React from "react";
+import type { ReactNode } from "react";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-import { ThemeProvider } from "next-themes";
-import { NextUIProvider } from "@nextui-org/system";
-import { ThemeProviderProps } from "next-themes";
-
-export interface ProvidersProps {
-  children: React.ReactNode;
-  themeProps?: ThemeProviderProps;
-}
-
-export function Providers({ children, themeProps }: ProvidersProps) {
+export function Providers({ children }: { children: ReactNode }) {
   return (
-    <NextUIProvider>
-      <ThemeProvider
-        defaultTheme='system'
-        attribute='class'
-        {...themeProps}>
+    <SessionProvider>
+      <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
-      </ThemeProvider>
-    </NextUIProvider>
+      </NextThemesProvider>
+    </SessionProvider>
   );
 }

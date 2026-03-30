@@ -1,34 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* HeroUI v3 — imported selectively to avoid toast.css view-transition syntax
+   unsupported by Turbopack's CSS parser */
+@import "@heroui/styles/base";
+@import "@heroui/styles/themes/default";
+@import "@heroui/styles/utilities";
+@import "@heroui/styles/variants";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Montserrat Alternates", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  html {
+    @apply antialiased;
   }
 }
 
@@ -36,7 +22,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* scrollbar-gutter: stable both-edges; */
 }
 
 * {
@@ -68,7 +53,7 @@ body {
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
-} 
+}
 
 @-webkit-keyframes fadeIn {
   0% {opacity: 0;}

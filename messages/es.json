@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "invoices": "Facturas",
+    "household": "Familia",
+    "settings": "Configuración",
+    "signOut": "Cerrar sesión",
+    "home": "Inicio"
+  },
+  "invoice": {
+    "title": "Facturas",
+    "new": "Nueva factura",
+    "edit": "Editar factura",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "place": "Establecimiento",
+    "nif": "NIF",
+    "total": "Total",
+    "date": "Fecha",
+    "description": "Descripción",
+    "concept": "Concepto",
+    "account": "Cuenta",
+    "reimbursable": "Reembolsable",
+    "refunded": "Reembolsado",
+    "vatRefund": "Devolución IVA",
+    "scanReceipt": "Escanear factura",
+    "scanHint": "Tomá una foto de la factura para rellenar el formulario automáticamente"
+  },
+  "concepts": {
+    "Meal": "Comida",
+    "Technology": "Tecnología",
+    "Internet": "Internet",
+    "Electricity": "Electricidad",
+    "Education": "Educación",
+    "Transportation": "Transporte",
+    "Others": "Otros"
+  },
+  "accounts": {
+    "Personal": "Personal",
+    "Business": "Empresa"
+  },
+  "household": {
+    "title": "Mi familia",
+    "members": "Miembros",
+    "invite": "Invitar miembro",
+    "role": {
+      "OWNER": "Propietario",
+      "MEMBER": "Miembro"
+    }
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "signInWithGoogle": "Continuar con Google",
+    "email": "Email",
+    "password": "Contraseña",
+    "name": "Nombre"
+  }
+}
