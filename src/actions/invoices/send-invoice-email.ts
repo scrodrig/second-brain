@@ -20,8 +20,9 @@ export async function sendInvoiceEmail(invoiceId: string) {
   });
   if (!invoice) throw new Error("Invoice not found");
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pdfBuffer = await renderToBuffer(
-    React.createElement(InvoicePdfDocument, { invoice })
+    React.createElement(InvoicePdfDocument, { invoice }) as any
   );
 
   await resend.emails.send({

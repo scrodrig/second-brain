@@ -11,7 +11,7 @@ export const InvoiceSchema = z.object({
   description: z.string().max(500).optional(),
   isReimbursable: z.boolean().default(false),
   isRefunded: z.boolean().default(false),
-  vatRefund: z.boolean().optional(),
+  vatRefund: z.number().min(0).optional(),
 });
 
 export type InvoiceInput = z.infer<typeof InvoiceSchema>;

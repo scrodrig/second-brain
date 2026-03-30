@@ -24,7 +24,7 @@ export function LoginForm() {
     <div className="space-y-4">
       <Button
         fullWidth
-        variant="flat"
+        variant="ghost"
         startContent={<FaGoogle />}
         onPress={() => signIn("google", { callbackUrl: "/" })}
       >
@@ -52,7 +52,7 @@ export function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Button type="submit" color="primary" isLoading={isLoading} fullWidth>
+        <Button type="submit" color="primary" isLoading={isLoading} fullWidth variant="primary">
           {t("signIn")}
         </Button>
       </form>

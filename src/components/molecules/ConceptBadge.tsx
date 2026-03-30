@@ -20,7 +20,7 @@ export function ConceptBadge({ concept, showTooltip = true }: ConceptBadgeProps)
     <Chip
       color={config.color}
       startContent={<Icon className="text-sm" />}
-      variant="flat"
+      variant="soft"
     >
       {t(concept)}
     </Chip>

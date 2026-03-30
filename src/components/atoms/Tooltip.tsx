@@ -1,5 +1,17 @@
-import { Tooltip as HeroTooltip, type TooltipProps as HeroTooltipProps } from "@heroui/react";
+import type { ReactNode } from "react";
+import { Tooltip as HeroTooltip } from "@heroui/react";
 
-export function Tooltip(props: HeroTooltipProps) {
-  return <HeroTooltip placement="top" {...props} />;
+interface TooltipProps {
+  content: ReactNode;
+  placement?: "top" | "bottom" | "left" | "right";
+  children: ReactNode;
+}
+
+export function Tooltip({ content, placement = "top", children }: TooltipProps) {
+  return (
+    <HeroTooltip>
+      <HeroTooltip.Trigger>{children}</HeroTooltip.Trigger>
+      <HeroTooltip.Content placement={placement}>{content}</HeroTooltip.Content>
+    </HeroTooltip>
+  );
 }

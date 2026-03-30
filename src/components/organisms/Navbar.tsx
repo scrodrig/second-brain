@@ -29,7 +29,7 @@ export function Navbar() {
             />
             <Button
               size="sm"
-              variant="light"
+              variant="ghost"
               isIconOnly
               aria-label={t("signOut")}
               onPress={() => signOut({ callbackUrl: "/login" })}

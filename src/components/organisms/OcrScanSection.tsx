@@ -41,8 +41,7 @@ export function OcrScanSection({ onExtracted }: OcrScanSectionProps) {
         onChange={handleFileChange}
       />
       <Button
-        variant="flat"
-        color="primary"
+        variant="primary"
         startContent={<FaCamera />}
         onPress={() => inputRef.current?.click()}
         fullWidth

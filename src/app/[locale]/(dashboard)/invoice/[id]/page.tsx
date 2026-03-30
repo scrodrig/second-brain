@@ -1,6 +1,5 @@
 import { getInvoiceById } from "@/actions/invoices/get-invoice-by-id";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ConceptBadge } from "@/components/molecules/ConceptBadge";
 import { Button } from "@/components/atoms/Button";
@@ -22,9 +21,8 @@ export default async function InvoiceDetailPage({
       <div className="flex items-center justify-between">
         <h1 className="font-heading text-2xl font-bold">{invoice.place}</h1>
         <Button
-          as={Link}
           href={`/invoices/${invoice.id}/edit`}
-          variant="flat"
+          variant="ghost"
           startContent={<FaPencilAlt />}
         >
           {t("edit")}

@@ -130,13 +130,13 @@ export function InvoiceForm({ invoice }: InvoiceFormProps) {
       <div className="flex gap-3 pt-4">
         <Button
           type="button"
-          variant="flat"
+          variant="ghost"
           onPress={() => router.back()}
           fullWidth
         >
           {t("cancel")}
         </Button>
-        <Button type="submit" color="primary" isLoading={isSubmitting} fullWidth>
+        <Button type="submit" variant="primary" isLoading={isSubmitting} fullWidth>
           {t("save")}
         </Button>
       </div>

@@ -44,7 +44,7 @@ export function InvoiceGrid({ invoices, totalPages, currentPage }: InvoiceGridPr
             <div className="mb-3 flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
                 <p className="truncate font-semibold">{invoice.place}</p>
-                <p className="text-foreground-400 text-sm">
+                <p className="text-sm text-foreground-400">
                   {new Date(invoice.date).toLocaleDateString()}
                 </p>
               </div>
@@ -62,10 +62,9 @@ export function InvoiceGrid({ invoices, totalPages, currentPage }: InvoiceGridPr
 
             <div className="flex items-center justify-end gap-2">
               <Button
-                as={Link}
                 href={`/invoices/${invoice.id}/edit`}
                 size="sm"
-                variant="flat"
+                variant="ghost"
                 isIconOnly
                 aria-label={t("edit")}
               >
@@ -73,8 +72,7 @@ export function InvoiceGrid({ invoices, totalPages, currentPage }: InvoiceGridPr
               </Button>
               <Button
                 size="sm"
-                variant="flat"
-                color="danger"
+                variant="danger"
                 isIconOnly
                 aria-label={t("delete")}
                 onPress={() => handleDelete(invoice.id)}
@@ -88,11 +86,34 @@ export function InvoiceGrid({ invoices, totalPages, currentPage }: InvoiceGridPr
 
       {totalPages > 1 && (
         <div className="flex justify-center">
-          <Pagination
-            total={totalPages}
-            page={currentPage}
-            onChange={(page) => router.push(`?page=${page}`)}
-          />
+          <Pagination>
+            <Pagination.Content>
+              <Pagination.Item>
+                <Pagination.Previous
+                  onClick={() => router.push(`?page=${Math.max(1, currentPage - 1)}`)}
+                >
+                  <Pagination.PreviousIcon />
+                </Pagination.Previous>
+              </Pagination.Item>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Pagination.Item key={page}>
+                  <Pagination.Link
+                    isActive={page === currentPage}
+                    onClick={() => router.push(`?page=${page}`)}
+                  >
+                    {page}
+                  </Pagination.Link>
+                </Pagination.Item>
+              ))}
+              <Pagination.Item>
+                <Pagination.Next
+                  onClick={() => router.push(`?page=${Math.min(totalPages, currentPage + 1)}`)}
+                >
+                  <Pagination.NextIcon />
+                </Pagination.Next>
+              </Pagination.Item>
+            </Pagination.Content>
+          </Pagination>
         </div>
       )}
     </div>
