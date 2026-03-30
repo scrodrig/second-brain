@@ -1,36 +1,34 @@
-export const revalidate = 300; // 1 minute
+import { getInvoices } from "@/actions/invoices/get-invoices";
+import { InvoiceGrid } from "@/components/organisms/InvoiceGrid";
+import { Button } from "@/components/atoms/Button";
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { FaPlus } from "react-icons/fa";
 
-import { InvoiceGrid, Pagination, Title } from "@/components";
-
-import { cn } from "@heroui/react";
-import { getInvoices } from "@/actions";
-import { redirect } from "next/navigation";
-
-interface Props {
-  searchParams: {
-    page?: number;
-  };
-}
-
-export default async function InvoicePage({ searchParams }: Props) {
-  const { page } = await searchParams;
-  const currentPage = page ? Number(page) : 1;
-
-  const { invoices, totalPages } = await getInvoices({
-    page: currentPage,
-    take: 8,
-  });
-
-  if (invoices.length === 0) {
-    console.log("No invoices found");
-    redirect("/");
-  }
+export default async function InvoicesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const t = await getTranslations("invoice");
+  const params = await searchParams;
+  const page = Number(params.page ?? 1);
+  const { invoices, totalPages, currentPage } = await getInvoices(page);
 
   return (
     <div>
-      <Title title="Invoices" />
-      <InvoiceGrid invoices={invoices} />
-      <Pagination totalPages={totalPages} />
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="font-heading text-2xl font-bold">{t("title")}</h1>
+        <Button
+          as={Link}
+          href="/invoices/new"
+          color="primary"
+          startContent={<FaPlus />}
+        >
+          {t("new")}
+        </Button>
+      </div>
+      <InvoiceGrid invoices={invoices} totalPages={totalPages} currentPage={currentPage} />
     </div>
   );
 }
