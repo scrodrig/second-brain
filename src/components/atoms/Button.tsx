@@ -37,12 +37,15 @@ export function Button({
 }: ButtonProps) {
   const resolvedVariant = color ? colorToVariant[color] : variant;
 
-  const content = (
-    <>
-      {startContent && <span className="flex items-center">{startContent}</span>}
+  const hasAdornment = !!startContent || !!endContent;
+  const content = hasAdornment ? (
+    <span className="flex items-center justify-center gap-2">
+      {startContent}
       {children}
-      {endContent && <span className="flex items-center">{endContent}</span>}
-    </>
+      {endContent}
+    </span>
+  ) : (
+    children
   );
 
   if (href) {
